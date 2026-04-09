@@ -18,25 +18,26 @@ const features = [
 
 export default function Experience() {
   return (
-    <section id="experience" className="bg-noir py-28 md:py-36">
+    <section id="experience" className="bg-creme py-28 md:py-36">
       <div className="max-w-6xl mx-auto px-6 md:px-12">
         <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.6 }} className="mb-16">
           <div className="flex items-center gap-4 mb-5">
-            <span className="font-mono text-[10px] tracking-[0.28em] uppercase text-or">The Experience</span>
-            <span className="block flex-1 max-w-[80px] h-px bg-gradient-to-r from-or/30 to-transparent" />
+            <span className="font-mono text-[10px] tracking-[0.28em] uppercase text-rouge">The Experience</span>
+            <span className="block flex-1 max-w-[80px] h-px bg-gradient-to-r from-rouge/30 to-transparent" />
           </div>
-          <h2 className="font-display text-[clamp(34px,4vw,56px)] italic font-normal text-creme leading-tight max-w-xl">
+          <h2 className="font-display text-[clamp(34px,4vw,56px)] italic font-normal text-encre leading-tight max-w-xl">
             More than a meal,<br/>a true <em>soirée</em>
           </h2>
         </motion.div>
-        <div className="grid md:grid-cols-3 gap-px bg-creme/[0.05]">
+
+        <div className="grid md:grid-cols-3 gap-px bg-rouge/10">
           {features.map((f, i) => (
             <motion.div key={f.title} initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
               transition={{ duration: 0.5, delay: (i % 3) * 0.1 }}
-              className="bg-noir p-10 md:p-12 hover:bg-encre transition-colors duration-300 group">
-              <div className="text-or mb-6 group-hover:scale-110 transition-transform duration-300 w-fit">{f.icon}</div>
-              <h3 className="font-display text-xl italic text-creme mb-3">{f.title}</h3>
-              <p className="font-body text-[15px] text-creme/45 leading-relaxed">{f.desc}</p>
+              className="bg-creme p-10 md:p-12 hover:bg-white transition-colors duration-300 group">
+              <div className="text-rouge mb-6 group-hover:scale-110 transition-transform duration-300 w-fit">{f.icon}</div>
+              <h3 className="font-display text-xl italic text-encre mb-3">{f.title}</h3>
+              <p className="font-body text-[15px] text-encre/50 leading-relaxed">{f.desc}</p>
             </motion.div>
           ))}
         </div>
