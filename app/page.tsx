@@ -2,6 +2,7 @@ import Nav from "@/components/Nav";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Menu from "@/components/Menu";
+import Gallery from "@/components/Gallery";
 import Press from "@/components/Press";
 import Experience from "@/components/Experience";
 import Info from "@/components/Info";
@@ -15,6 +16,7 @@ export default function Home() {
       <Hero />
       <About />
       <Menu />
+      <Gallery />
       <Press />
       <Experience />
       <Info />
