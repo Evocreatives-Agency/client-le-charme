@@ -4,58 +4,79 @@ import Image from "next/image";
 
 export default function About() {
   return (
-    <section id="about" className="bg-creme py-28 md:py-36">
-      <div className="max-w-6xl mx-auto px-6 md:px-12 grid md:grid-cols-2 gap-16 md:gap-24 items-center">
+    <section id="about" className="bg-encre py-24 md:py-32 overflow-hidden">
+      <div className="max-w-7xl mx-auto px-6 md:px-10">
 
-        <motion.div initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.7 }}>
-          <div className="flex items-center gap-4 mb-6">
-            <span className="font-mono text-[10px] tracking-[0.28em] uppercase text-rouge">Our Story</span>
-            <span className="block flex-1 max-w-[80px] h-px bg-gradient-to-r from-rouge/30 to-transparent" />
+        {/* Header */}
+        <motion.div initial={{opacity:0,y:20}} whileInView={{opacity:1,y:0}} viewport={{once:true}} transition={{duration:0.6}}
+          className="mb-16 max-w-2xl">
+          <div className="flex items-center gap-3 mb-5">
+            <span className="font-mono text-[10px] tracking-[0.3em] uppercase text-rouge">Our Story</span>
+            <span className="block w-16 h-px bg-rouge/30" />
           </div>
-          <h2 className="font-display text-[clamp(34px,4vw,54px)] italic font-normal leading-[1.05] text-encre mb-7">
-            French flavour,<br/>neighbourhood warmth
+          <h2 className="font-display text-[clamp(36px,5vw,64px)] italic font-normal text-white leading-[1.0]">
+            French flavour,<br/>
+            <span className="text-or">neighbourhood</span> warmth
           </h2>
-          <p className="font-body text-lg leading-relaxed text-encre/65 mb-5">
-            Tucked into a warm, lived-in dining room on Edmonton Trail, Le Charme is the French bistro
-            Calgary&apos;s northeast has been waiting for. Owner Matt Drummond meticulously rebuilt the
-            space — exposed brick, warm wood, vintage curiosities, and a long red bar built to look like
-            it&apos;s been there for decades.
-          </p>
-          <p className="font-body text-lg leading-relaxed text-encre/65 mb-10">
-            Chef Nils Schneider&apos;s seasonal menu draws on the best of Alberta&apos;s larder — local
-            proteins, fresh produce — elevated with classic bistro finesse. Whether it&apos;s a casual
-            Tuesday dinner or a special celebration, every table at Le Charme is a table worth lingering at.
-          </p>
-          <div className="grid grid-cols-2 gap-6 pt-8 border-t border-rouge/15">
-            {[
-              ["Cuisine","Casual Elegant French / Canadian"],
-              ["Ambiance","Intimate, warm, neighbourhood"],
-              ["Outdoor","Wood-burning firepit & patio"],
-              ["Perfect For","Date nights & small celebrations"],
-            ].map(([label, val]) => (
-              <div key={label}>
-                <p className="font-mono text-[10px] tracking-[0.18em] uppercase text-rouge mb-1">{label}</p>
-                <p className="font-body text-[15px] text-encre/55 leading-snug">{val}</p>
+        </motion.div>
+
+        {/* Two-photo + text layout */}
+        <div className="grid md:grid-cols-12 gap-6 md:gap-8 items-start">
+
+          {/* Left: tall bar photo */}
+          <motion.div initial={{opacity:0,x:-24}} whileInView={{opacity:1,x:0}} viewport={{once:true}} transition={{duration:0.8}}
+            className="md:col-span-5 relative">
+            <div className="relative overflow-hidden" style={{aspectRatio:'3/4'}}>
+              <Image
+                src="/interior-bar.jpg"
+                alt="Le Charme bar — warm wood and brass accents"
+                fill className="object-cover object-center"
+                sizes="(max-width: 768px) 100vw, 42vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-encre/30 to-transparent" />
+            </div>
+          </motion.div>
+
+          {/* Right: text + small booths photo stacked */}
+          <div className="md:col-span-7 flex flex-col justify-between gap-8">
+            <motion.div initial={{opacity:0,y:20}} whileInView={{opacity:1,y:0}} viewport={{once:true}} transition={{duration:0.7,delay:0.1}}>
+              <p className="font-body text-[19px] leading-[1.75] text-white/65 mb-5">
+                Tucked into a warm, lived-in dining room on Edmonton Trail, Le Charme is the French bistro Calgary&apos;s northeast has been waiting for. Owner Matt Drummond meticulously rebuilt the space — exposed brick, warm wood, vintage curiosities, and a long red bar built to look like it&apos;s been there for decades.
+              </p>
+              <p className="font-body text-[19px] leading-[1.75] text-white/65 mb-10">
+                Chef Nils Schneider&apos;s seasonal menu draws on the best of Alberta&apos;s larder — local proteins, fresh produce — elevated with classic bistro finesse.
+              </p>
+              <div className="grid grid-cols-2 gap-5 pt-8 border-t border-white/[0.08]">
+                {[
+                  ["Cuisine","Casual Elegant French / Canadian"],
+                  ["Ambiance","Intimate, warm, neighbourhood"],
+                  ["Outdoor","Wood-burning firepit & patio"],
+                  ["Perfect For","Date nights & celebrations"],
+                ].map(([l,v])=>(
+                  <div key={l}>
+                    <p className="font-mono text-[9px] tracking-[0.2em] uppercase text-rouge mb-1.5">{l}</p>
+                    <p className="font-body text-[15px] text-white/50 leading-snug">{v}</p>
+                  </div>
+                ))}
               </div>
-            ))}
-          </div>
-        </motion.div>
+            </motion.div>
 
-        <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ duration: 0.7, delay: 0.15 }}
-          className="relative hidden md:block">
-          <div className="relative aspect-[3/4] overflow-hidden">
-            <Image
-              src="https://www.diningandcooking.com/wp-content/uploads/2025/10/52adec765aff5836dea23fcd167c4a0a.jpeg"
-              alt="Le Charme dining room interior"
-              fill className="object-cover object-center"
-              sizes="(max-width: 1200px) 50vw, 600px"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-encre/40 via-transparent to-transparent" />
+            {/* Booths photo — smaller, offset */}
+            <motion.div initial={{opacity:0,x:24}} whileInView={{opacity:1,x:0}} viewport={{once:true}} transition={{duration:0.8,delay:0.2}}
+              className="relative overflow-hidden ml-auto w-full md:w-5/6" style={{aspectRatio:'16/9'}}>
+              <Image
+                src="/interior-booths.jpg"
+                alt="Le Charme banquette seating with gallery wall"
+                fill className="object-cover object-top"
+                sizes="(max-width: 768px) 100vw, 36vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-b from-encre/10 to-encre/30" />
+              <div className="absolute bottom-4 left-5">
+                <p className="font-display text-lg italic text-white/80">Gallery wall &amp; booths</p>
+              </div>
+            </motion.div>
           </div>
-          <div className="absolute -bottom-6 -right-6 w-40 h-40 border border-rouge/20 -z-10" />
-          <p className="absolute bottom-3 right-3 font-mono text-[9px] tracking-[0.08em] text-white/40">Photo: Gavin Young / Postmedia</p>
-        </motion.div>
-
+        </div>
       </div>
     </section>
   );
